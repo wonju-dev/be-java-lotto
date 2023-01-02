@@ -13,4 +13,9 @@ public class LottoControllerImpl implements LottoController {
         this.consoleIn = consoleIn;
         this.consoleOut = consoleOut;
     }
+
+    @Override
+    public Integer getPurchasePrice() {
+        return consoleIn.readInteger();
+    }
 }
