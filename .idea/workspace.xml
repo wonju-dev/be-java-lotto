@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="75cfef9c-bc50-442b-99d5-2d9016fefebb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/console/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/console/Input.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/console/TerminalIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/console/TerminalIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/controller/LottoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/controller/LottoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/controller/LottoControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/controller/LottoControllerImpl.java" afterDir="false" />
     </list>
@@ -24,13 +23,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,6 +63,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="kr.codesquad.controller" />
       <recent name="kr.codesquad" />
     </key>
   </component>
@@ -67,7 +73,7 @@
       <module name="java-lotto.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kr.codesquad.controller.*" />
+          <option name="PATTERN" value="kr.codesquad.domain.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
