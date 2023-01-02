@@ -1,5 +1,7 @@
 package kr.codesquad;
 
+import kr.codesquad.console.TerminalIn;
+import kr.codesquad.console.TerminalOut;
 import kr.codesquad.controller.LottoController;
 import kr.codesquad.controller.LottoControllerImpl;
 import kr.codesquad.lottomachine.LottoMachine;
@@ -21,6 +23,6 @@ public class Main {
     }
 
     private static LottoController lottoController() {
-        return new LottoControllerImpl();
+        return new LottoControllerImpl(new TerminalIn(), new TerminalOut());
     }
 }
