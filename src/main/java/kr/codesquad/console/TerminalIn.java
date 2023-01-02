@@ -1,6 +1,9 @@
 package kr.codesquad.console;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class TerminalIn implements Input {
 
@@ -9,5 +12,10 @@ public class TerminalIn implements Input {
     @Override
     public Integer readInteger() {
         return scanner.nextInt();
+    }
+
+    @Override
+    public List<Integer> getAnswerNumbers() {
+        return Arrays.stream(scanner.next().split(", ")).map((String s) -> Integer.parseInt(s.trim())).collect(Collectors.toList());
     }
 }
