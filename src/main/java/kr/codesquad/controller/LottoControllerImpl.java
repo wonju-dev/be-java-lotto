@@ -2,10 +2,12 @@ package kr.codesquad.controller;
 
 import kr.codesquad.console.Input;
 import kr.codesquad.console.Output;
-import kr.codesquad.domain.Lotto;
-import kr.codesquad.domain.LottoMachine;
-import kr.codesquad.domain.Result;
-import kr.codesquad.messageGenerator.MessageGenerator;
+import kr.codesquad.domain.*;
+import kr.codesquad.domain.lotto.AnswerLotto;
+import kr.codesquad.domain.lotto.Lotto;
+import kr.codesquad.domain.lottomachine.LottoMachine;
+import kr.codesquad.dto.PurchaseRecord;
+import kr.codesquad.domain.MessageGenerator;
 
 import java.util.List;
 
@@ -25,19 +27,34 @@ public class LottoControllerImpl implements LottoController {
 
     @Override
     public void start() {
-        Integer lottoCount = getLottoCount();
-        List<Lotto> lottos = lottoMachine.getRandomLottos(lottoCount);
-        output.printLottos(lottos);
-        List<Integer> answerNumbers = input.getAnswerNumbers();
-        Result results = lottoMachine.getResult(answerNumbers);
-        output.printResult(results);
+        PurchaseRecord purchaseRecord = getPurchaseRecord();
+        List<Lotto> lottos = lottoMachine.getRandomLottos(purchaseRecord.getCount());
+        output.print(messageGenerator.getLottoMessage(lottos));
+
+        AnswerLotto answerLotto = getAnswerLotto();
+        Result results = lottoMachine.getResult(lottos, answerLotto);
+
+        printResultMessage(results, purchaseRecord);
     }
 
-    private Integer getLottoCount() {
+    private void printResultMessage(Result results, PurchaseRecord purchaseRecord) {
+        output.print(messageGenerator.getResultMessage(results));
+        output.print(messageGenerator.getProfitMessage(Calculator.calculateProfit(results, purchaseRecord.getUsedMoney())));
+    }
+
+    private AnswerLotto getAnswerLotto() {
+        output.print(messageGenerator.getAnswerNumberMessage());
+        List<Integer> answerNumbers = input.readAnswerNumbers();
+        output.print(messageGenerator.getBonusNumberMessage());
+        Integer bonusNumber = input.readInteger();
+        return new AnswerLotto(answerNumbers, bonusNumber);
+    }
+
+    private PurchaseRecord getPurchaseRecord() {
         output.print(messageGenerator.getInputMessage());
-        Integer count = input.readInteger() / 1000;
-        output.print(messageGenerator.getLottoCountMessage(count));
-        return count;
+        Integer money = input.readInteger();
+        PurchaseRecord purchaseRecord = PurchaseRecord.getNew(money);
+        output.print(messageGenerator.getLottoCountMessage(purchaseRecord.getCount()));
+        return purchaseRecord;
     }
-
 }

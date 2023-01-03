@@ -5,5 +5,5 @@ import java.util.List;
 public interface Input {
     Integer readInteger();
 
-    List<Integer> getAnswerNumbers();
+    List<Integer> readAnswerNumbers();
 }
