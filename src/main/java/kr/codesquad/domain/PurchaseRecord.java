@@ -1,6 +1,6 @@
 package kr.codesquad.domain;
 
-import static kr.codesquad.domain.Lotto.*;
+import static kr.codesquad.domain.lotto.Lotto.*;
 
 public class PurchaseRecord {
     private Integer usedMoney;
@@ -8,7 +8,7 @@ public class PurchaseRecord {
 
     private PurchaseRecord(Integer money) {
         this.count = money / LOTTO_PRICE;
-        this.usedMoney = money - count * LOTTO_PRICE;
+        this.usedMoney = count * LOTTO_PRICE;
     }
 
     public static PurchaseRecord getNew(Integer money) {
