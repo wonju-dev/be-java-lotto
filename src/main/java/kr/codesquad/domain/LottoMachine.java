@@ -7,22 +7,22 @@ public class LottoMachine {
 
     private List<Lotto> lottos;
 
-    public List<Lotto> getRandomLottos(Integer price) {
+    public List<Lotto> getRandomLottos(Integer count) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < price; i++) {
+        while (count > 0) {
             lottos.add(Lotto.getNewLotto());
+            count--;
         }
         this.lottos = lottos;
         return lottos;
     }
 
-    public Result getResult(List<Integer> answerNumbers) {
+    public Result getResult(Lotto answerLotto) {
         Result result = Result.initResult();
 
-        for (Lotto lotto : lottos) {
-            Accuracy accuracy = lotto.compare(answerNumbers);
-            result.record(accuracy);
-        }
+        lottos.stream().forEach(lotto -> result.record(lotto.compare(answerLotto)));
+
+        result.removeUnnecessaryAccuracy();
 
         return result;
     }
