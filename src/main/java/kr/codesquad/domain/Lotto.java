@@ -11,6 +11,8 @@ public class Lotto {
     private static final Integer RANGE_UPPER_BOUND = 46;
     private static final Integer COUNT_LOWER_BOUND = 0;
     private static final Integer COUNT_UPPER_BOUND = 6;
+    public static final Integer LOTTO_PRICE = 1000;
+
 
     private static List<Integer> randomNumbers = IntStream.range(RANGE_LOWER_BOUND, RANGE_UPPER_BOUND).boxed().collect(Collectors.toList());
 
