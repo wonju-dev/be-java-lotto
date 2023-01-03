@@ -1,7 +1,7 @@
 package kr.codesquad.message;
 
 import kr.codesquad.domain.Accuracy;
-import kr.codesquad.domain.Lotto;
+import kr.codesquad.domain.lotto.Lotto;
 import kr.codesquad.domain.Result;
 
 import java.util.List;
@@ -16,6 +16,8 @@ public class MessageGenerator {
     private static final String PROFIT_MSG_TEMPLATE = "총 수익률은 %.2f%%입니다.";
     private static final String BONUS_BALL_REQUIRE_MSG_TEMPLATE = "보너스 볼을 입력해 주세요.";
     private static final String NEW_LINE_DELIMETER = "\n";
+    public static final String MATCH_RESULT_MSG_TEMPLATE = "%d개 일치 (%d원)-%d개";
+    public static final String BONUS_MATCH_RESULT_MSG_TEMPLATE = "%d개 일치, 보너스 볼 일치(%d원)-%d개";
 
     public String getLottoCountMessage(Integer count) {
         return count + LOTTO_COUNT_MSG_TEMPLATE;
