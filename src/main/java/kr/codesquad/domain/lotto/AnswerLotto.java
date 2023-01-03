@@ -1,4 +1,4 @@
-package kr.codesquad.domain;
+package kr.codesquad.domain.lotto;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class AnswerLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public Boolean matchBonusNumber() {
-        numbers.contains(bonusNumber);
+    public Boolean hasBonusNumber(List<Integer> numbers) {
+        return numbers.contains(bonusNumber);
     }
 }
