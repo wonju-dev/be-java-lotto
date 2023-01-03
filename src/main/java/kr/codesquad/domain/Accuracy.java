@@ -3,16 +3,19 @@ package kr.codesquad.domain;
 import java.util.Arrays;
 import java.util.Optional;
 
-public enum Accuracy {
+import static kr.codesquad.message.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
+import static kr.codesquad.message.MessageGenerator.MATCH_RESULT_MSG_TEMPLATE;
 
-    SIX(6, false, 2000000000, "%d개 일치 (%d원)-%d개"),
-    FIVE_BONUS(5, true, 30000000, "%d개 일치, 보너스 볼 일치(%d원)-%d개"),
-    FIVE(5, false, 1500000, "%d개 일치 (%d원)-%d개"),
-    FOUR(4, false, 50000, "%d개 일치 (%d원)-%d개"),
-    THREE(3, false, 5000, "%d개 일치 (%d원)-%d개"),
-    TWO(2, false, -1, "%d개 일치 (%d원)-%d개"),
-    ONE(1, false, -1, "%d개 일치 (%d원)-%d개"),
-    ZERO(0, false, -1, "%d개 일치 (%d원)-%d개");
+public enum Accuracy {
+    NOT_MATCH(-1, false, -1, ""),
+    ZERO(0, false, -1, MATCH_RESULT_MSG_TEMPLATE),
+    ONE(1, false, -1, MATCH_RESULT_MSG_TEMPLATE),
+    TWO(2, false, -1, MATCH_RESULT_MSG_TEMPLATE),
+    THREE(3, false, 5000, MATCH_RESULT_MSG_TEMPLATE),
+    FOUR(4, false, 50000, MATCH_RESULT_MSG_TEMPLATE),
+    FIVE(5, false, 1500000, MATCH_RESULT_MSG_TEMPLATE),
+    FIVE_BONUS(5, true, 30000000, BONUS_MATCH_RESULT_MSG_TEMPLATE),
+    SIX(6, false, 2000000000, MATCH_RESULT_MSG_TEMPLATE);
 
     private Integer match;
     private Boolean needBonus;
@@ -27,9 +30,11 @@ public enum Accuracy {
         this.resultMessage = resultMessage;
     }
 
-    public static Optional<Accuracy> getByMatchNumber(Integer numberOfCommons) {
+    public static Optional<Accuracy> findByAttribute(Integer matchNumber, Boolean hasBonusNumber) {
         return Arrays.asList(Accuracy.values()).stream()
-                .filter(accuracy -> accuracy.getMatch() == numberOfCommons)
+                .filter(accuracy -> accuracy.match == matchNumber && (
+                        (accuracy.needBonus && hasBonusNumber) || (!accuracy.needBonus && !hasBonusNumber)
+                ))
                 .findFirst();
     }
 
