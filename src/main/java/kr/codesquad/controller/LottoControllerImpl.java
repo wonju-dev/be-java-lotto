@@ -3,7 +3,7 @@ package kr.codesquad.controller;
 import kr.codesquad.console.Input;
 import kr.codesquad.console.Output;
 import kr.codesquad.domain.*;
-import kr.codesquad.messageGenerator.MessageGenerator;
+import kr.codesquad.message.MessageGenerator;
 
 import java.util.List;
 

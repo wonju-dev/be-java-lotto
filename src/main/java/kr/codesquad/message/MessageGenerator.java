@@ -1,4 +1,4 @@
-package kr.codesquad.messageGenerator;
+package kr.codesquad.message;
 
 import kr.codesquad.domain.Accuracy;
 import kr.codesquad.domain.Lotto;
