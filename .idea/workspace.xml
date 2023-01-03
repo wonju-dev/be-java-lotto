@@ -7,6 +7,8 @@
     <list default="true" id="75cfef9c-bc50-442b-99d5-2d9016fefebb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/controller/LottoControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/controller/LottoControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/domain/lotto/Lotto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/domain/lotto/Lotto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/domain/lottomachine/LottoMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/domain/lottomachine/LottoMachine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/kr/codesquad/message/MessageGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kr/codesquad/message/MessageGenerator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -67,6 +69,9 @@
       <recent name="kr.codesquad.controller" />
       <recent name="kr.codesquad" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="kr.codesquad.domain.lottomachine" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="kr.codesquad.domain" />
     </key>
@@ -77,7 +82,7 @@
       <module name="java-lotto.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="kr.codesquad.domain.*" />
+          <option name="PATTERN" value="kr.codesquad.domain.lottomachine.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,7 +106,7 @@
       <updated>1672210428730</updated>
       <workItem from="1672210432725" duration="156000" />
       <workItem from="1672642787861" duration="1690000" />
-      <workItem from="1672709145817" duration="13786000" />
+      <workItem from="1672709145817" duration="23603000" />
     </task>
     <servers />
   </component>

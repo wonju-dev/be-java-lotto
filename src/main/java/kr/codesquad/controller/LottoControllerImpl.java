@@ -3,6 +3,9 @@ package kr.codesquad.controller;
 import kr.codesquad.console.Input;
 import kr.codesquad.console.Output;
 import kr.codesquad.domain.*;
+import kr.codesquad.domain.lotto.AnswerLotto;
+import kr.codesquad.domain.lotto.Lotto;
+import kr.codesquad.domain.lottomachine.LottoMachine;
 import kr.codesquad.message.MessageGenerator;
 
 import java.util.List;
@@ -28,7 +31,7 @@ public class LottoControllerImpl implements LottoController {
         output.print(messageGenerator.getLottoMessage(lottos));
 
         AnswerLotto answerLotto = getAnswerLotto();
-        Result results = lottoMachine.getResult(answerLotto);
+        Result results = lottoMachine.getResult(lottos, answerLotto);
 
         printResultMessage(results, purchaseRecord);
     }
@@ -51,7 +54,6 @@ public class LottoControllerImpl implements LottoController {
         Integer money = input.readInteger();
         PurchaseRecord purchaseRecord = PurchaseRecord.getNew(money);
         output.print(messageGenerator.getLottoCountMessage(purchaseRecord.getCount()));
-
         return purchaseRecord;
     }
 }
