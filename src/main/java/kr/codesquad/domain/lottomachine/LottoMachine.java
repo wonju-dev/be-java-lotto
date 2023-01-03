@@ -1,11 +1,12 @@
-package kr.codesquad.domain;
+package kr.codesquad.domain.lottomachine;
+
+import kr.codesquad.domain.Lotto;
+import kr.codesquad.domain.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoMachine {
-
-    private List<Lotto> lottos;
+public class BasicLottoMachine {
 
     public List<Lotto> getRandomLottos(Integer count) {
         List<Lotto> lottos = new ArrayList<>();
@@ -13,11 +14,10 @@ public class LottoMachine {
             lottos.add(new Lotto());
             count--;
         }
-        this.lottos = lottos;
         return lottos;
     }
 
-    public Result getResult(Lotto answerLotto) {
+    public Result getResult(List<Lotto> lottos, Lotto answerLotto) {
         Result result = Result.initResult();
 
         lottos.stream().forEach(lotto -> result.record(lotto.compare(answerLotto)));

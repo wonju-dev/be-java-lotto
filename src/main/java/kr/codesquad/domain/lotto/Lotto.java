@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Lotto {
 
-    private List<Integer> numbers;
+    protected List<Integer> numbers;
     public static final Integer LOTTO_PRICE = 1000;
 
     public Lotto(List<Integer> numbers) {
@@ -15,8 +15,13 @@ public class Lotto {
         this.numbers = RandomNumberGenerator.generate();
     }
 
-    public Accuracy compare(Lotto answerLotto) {
-        return Accuracy.getByMatchNumber(getNumberOfCommons(answerLotto)).get();
+    public Accuracy compare(AnswerLotto answerLotto) {
+        return Accuracy.findByAttribute(
+                // match
+                // bonus
+                getNumberOfCommons(answerLotto),
+                answerLotto.matchBonusNumber()
+        ).get();
     }
 
     private Integer getNumberOfCommons(Lotto answerLotto) {

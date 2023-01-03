@@ -10,7 +10,7 @@ public class AnswerLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public Boolean matchBonusNumber(Integer number) {
-        return bonusNumber == number;
+    public Boolean matchBonusNumber() {
+        numbers.contains(bonusNumber);
     }
 }

@@ -6,7 +6,7 @@ import kr.codesquad.console.TerminalIn;
 import kr.codesquad.console.TerminalOut;
 import kr.codesquad.controller.LottoController;
 import kr.codesquad.controller.LottoControllerImpl;
-import kr.codesquad.domain.LottoMachine;
+import kr.codesquad.domain.lottomachine.LottoMachine;
 import kr.codesquad.message.MessageGenerator;
 
 public class Main {
