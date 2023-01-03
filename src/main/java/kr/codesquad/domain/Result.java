@@ -1,11 +1,12 @@
 package kr.codesquad.domain;
 
+import kr.codesquad.enums.Accuracy;
+
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static kr.codesquad.domain.Accuracy.REMOVE_LIST;
+import static kr.codesquad.enums.Accuracy.REMOVE_LIST;
 
 public class Result {
 

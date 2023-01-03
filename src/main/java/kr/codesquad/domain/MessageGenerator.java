@@ -1,6 +1,6 @@
-package kr.codesquad.message;
+package kr.codesquad.domain;
 
-import kr.codesquad.domain.Accuracy;
+import kr.codesquad.enums.Accuracy;
 import kr.codesquad.domain.lotto.Lotto;
 import kr.codesquad.domain.Result;
 

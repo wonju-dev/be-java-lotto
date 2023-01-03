@@ -1,11 +1,11 @@
-package kr.codesquad.domain;
+package kr.codesquad.enums;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static kr.codesquad.message.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
-import static kr.codesquad.message.MessageGenerator.MATCH_RESULT_MSG_TEMPLATE;
+import static kr.codesquad.domain.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
+import static kr.codesquad.domain.MessageGenerator.MATCH_RESULT_MSG_TEMPLATE;
 
 public enum Accuracy {
     NOT_MATCH(-1, false, -1, ""),
