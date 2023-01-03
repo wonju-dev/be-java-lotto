@@ -27,7 +27,7 @@ public class LottoControllerImpl implements LottoController {
         List<Lotto> lottos = lottoMachine.getRandomLottos(purchaseRecord.getCount());
         output.print(messageGenerator.getLottoMessage(lottos));
 
-        Lotto answerLotto = getAnswerLotto();
+        AnswerLotto answerLotto = getAnswerLotto();
         Result results = lottoMachine.getResult(answerLotto);
 
         printResultMessage(results, purchaseRecord);
@@ -38,10 +38,12 @@ public class LottoControllerImpl implements LottoController {
         output.print(messageGenerator.getProfitMessage(Calculator.calculateProfit(results, purchaseRecord.getUsedMoney())));
     }
 
-    private Lotto getAnswerLotto() {
+    private AnswerLotto getAnswerLotto() {
         output.print(messageGenerator.getAnswerNumberMessage());
         List<Integer> answerNumbers = input.readAnswerNumbers();
-        return new Lotto(answerNumbers);
+        output.print(messageGenerator.getBonusNumberMessage());
+        Integer bonusNumber = input.readInteger();
+        return new AnswerLotto(answerNumbers, bonusNumber);
     }
 
     private PurchaseRecord getPurchaseRecord() {

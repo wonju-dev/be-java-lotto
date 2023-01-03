@@ -14,6 +14,7 @@ public class MessageGenerator {
     private static final String INPUT_MSG_TEMPLATE = "구입금액을 입력해 주세요.";
     private static final String ANSWER_NUMBER_MSG_TEMPLATE = "당첨 번호를 입력해 주세요.";
     private static final String PROFIT_MSG_TEMPLATE = "총 수익률은 %.2f%%입니다.";
+    private static final String BONUS_BALL_REQUIRE_MSG_TEMPLATE = "보너스 볼을 입력해 주세요.";
     private static final String NEW_LINE_DELIMETER = "\n";
 
     public String getLottoCountMessage(Integer count) {
@@ -44,5 +45,9 @@ public class MessageGenerator {
 
     public String getProfitMessage(Double profit) {
         return String.format(PROFIT_MSG_TEMPLATE, profit);
+    }
+
+    public String getBonusNumberMessage() {
+        return BONUS_BALL_REQUIRE_MSG_TEMPLATE;
     }
 }
