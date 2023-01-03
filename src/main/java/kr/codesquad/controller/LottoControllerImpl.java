@@ -41,7 +41,7 @@ public class LottoControllerImpl implements LottoController {
     private Lotto getAnswerLotto() {
         output.print(messageGenerator.getAnswerNumberMessage());
         List<Integer> answerNumbers = input.readAnswerNumbers();
-        return Lotto.getNewLotto(answerNumbers);
+        return new Lotto(answerNumbers);
     }
 
     private PurchaseRecord getPurchaseRecord() {

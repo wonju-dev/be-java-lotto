@@ -13,7 +13,6 @@ public class MessageGenerator {
     private static final String LOTTO_COUNT_MSG_TEMPLATE = "개를 구매했습니다.";
     private static final String INPUT_MSG_TEMPLATE = "구입금액을 입력해 주세요.";
     private static final String ANSWER_NUMBER_MSG_TEMPLATE = "당첨 번호를 입력해 주세요.";
-    private static final String RESULT_MSG_TEMPLATE = "%d개 일치 (%d원)-%d개";
     private static final String PROFIT_MSG_TEMPLATE = "총 수익률은 %.2f%%입니다.";
     private static final String NEW_LINE_DELIMETER = "\n";
 
@@ -34,7 +33,7 @@ public class MessageGenerator {
                 .map((Map.Entry<Accuracy, Integer> entry) -> {
                     Accuracy accuracy = entry.getKey();
                     Integer count = entry.getValue();
-                    return String.format(RESULT_MSG_TEMPLATE, accuracy.getMatch(), accuracy.getPrize(), count);
+                    return String.format(accuracy.getResultMessage(), accuracy.getMatch(), accuracy.getPrize(), count);
                 })
                 .collect(Collectors.toList()));
     }
