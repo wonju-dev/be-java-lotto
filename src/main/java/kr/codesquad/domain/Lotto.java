@@ -25,19 +25,13 @@ public class Lotto {
         }
     }
 
-    private Lotto() {
+    public Lotto(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
-    public static Lotto getNewLotto() {
-        Lotto lotto = new Lotto();
-        lotto.init();
-        return lotto;
-    }
-
-    public static Lotto getNewLotto(List<Integer> numbers) {
-        Lotto lotto = getNewLotto();
-        lotto.init(numbers);
-        return lotto;
+    public Lotto() {
+        Collections.shuffle(randomNumbers);
+        this.numbers = List.copyOf(randomNumbers.subList(COUNT_LOWER_BOUND, COUNT_UPPER_BOUND));
     }
 
     public Accuracy compare(Lotto answerLotto) {
@@ -48,15 +42,6 @@ public class Lotto {
         return (int) numbers.stream()
                 .filter(number -> answerLotto.numbers.contains(number))
                 .count();
-    }
-
-    private void init() {
-        Collections.shuffle(randomNumbers);
-        numbers = List.copyOf(randomNumbers.subList(COUNT_LOWER_BOUND, COUNT_UPPER_BOUND));
-    }
-
-    private void init(List<Integer> numbers) {
-        this.numbers = numbers;
     }
 
     @Override

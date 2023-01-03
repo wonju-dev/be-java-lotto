@@ -10,7 +10,7 @@ public class LottoMachine {
     public List<Lotto> getRandomLottos(Integer count) {
         List<Lotto> lottos = new ArrayList<>();
         while (count > 0) {
-            lottos.add(Lotto.getNewLotto());
+            lottos.add(new Lotto());
             count--;
         }
         this.lottos = lottos;
