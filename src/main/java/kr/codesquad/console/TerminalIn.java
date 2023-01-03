@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class TerminalIn implements Input {
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
     @Override
     public Integer readInteger() {
@@ -15,7 +15,10 @@ public class TerminalIn implements Input {
     }
 
     @Override
-    public List<Integer> getAnswerNumbers() {
-        return Arrays.stream(scanner.next().split(", ")).map((String s) -> Integer.parseInt(s.trim())).collect(Collectors.toList());
+    public List<Integer> readAnswerNumbers() {
+        return Arrays.asList(scanner.next().split(",")).stream()
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
