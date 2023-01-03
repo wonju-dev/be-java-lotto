@@ -1,12 +1,13 @@
 package kr.codesquad.domain.lottomachine;
 
-import kr.codesquad.domain.Lotto;
+import kr.codesquad.domain.lotto.AnswerLotto;
+import kr.codesquad.domain.lotto.Lotto;
 import kr.codesquad.domain.Result;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasicLottoMachine {
+public class LottoMachine {
 
     public List<Lotto> getRandomLottos(Integer count) {
         List<Lotto> lottos = new ArrayList<>();
@@ -17,7 +18,7 @@ public class BasicLottoMachine {
         return lottos;
     }
 
-    public Result getResult(List<Lotto> lottos, Lotto answerLotto) {
+    public Result getResult(List<Lotto> lottos, AnswerLotto answerLotto) {
         Result result = Result.initResult();
 
         lottos.stream().forEach(lotto -> result.record(lotto.compare(answerLotto)));
