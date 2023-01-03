@@ -1,17 +1,18 @@
 package kr.codesquad.domain;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Lotto {
 
     private List<Integer> numbers;
+    private static final Integer RANGE_LOWER_BOUND = 1;
+    private static final Integer RANGE_UPPER_BOUND = 46;
+    private static final Integer COUNT_LOWER_BOUND = 0;
+    private static final Integer COUNT_UPPER_BOUND = 6;
 
-    private static List<Integer> randomNumbers = IntStream.range(1, 46).boxed().collect(Collectors.toList());
+    private static List<Integer> randomNumbers = IntStream.range(RANGE_LOWER_BOUND, RANGE_UPPER_BOUND).boxed().collect(Collectors.toList());
 
     private static final Map<Integer, Accuracy> result = new HashMap<>();
 
@@ -31,23 +32,33 @@ public class Lotto {
         return lotto;
     }
 
+    public static Lotto getNewLotto(List<Integer> numbers) {
+        Lotto lotto = getNewLotto();
+        lotto.init(numbers);
+        return lotto;
+    }
+
+    public Accuracy compare(Lotto answerLotto) {
+        return result.get(getNumberOfCommons(answerLotto));
+    }
+
+    private Integer getNumberOfCommons(Lotto answerLotto) {
+        return (int) numbers.stream()
+                .filter(number -> answerLotto.numbers.contains(number))
+                .count();
+    }
+
     private void init() {
         Collections.shuffle(randomNumbers);
-        numbers = List.copyOf(randomNumbers.subList(0, 6));
+        numbers = List.copyOf(randomNumbers.subList(COUNT_LOWER_BOUND, COUNT_UPPER_BOUND));
+    }
+
+    private void init(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
     @Override
     public String toString() {
         return numbers.toString();
-    }
-
-    public Accuracy compare(List<Integer> answerNumbers) {
-        return result.get(getNumberOfCommons(answerNumbers));
-    }
-
-    private Integer getNumberOfCommons(List<Integer> answerNumbers) {
-        int count = 0;
-        count += answerNumbers.stream().filter((Integer answerNumber) -> numbers.contains(answerNumber)).count();
-        return count;
     }
 }
