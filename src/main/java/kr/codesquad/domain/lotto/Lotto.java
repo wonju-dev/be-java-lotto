@@ -1,10 +1,13 @@
-package kr.codesquad.domain;
+package kr.codesquad.domain.lotto;
+
+import kr.codesquad.domain.Accuracy;
+import kr.codesquad.domain.RandomNumberGenerator;
 
 import java.util.*;
 
 public class Lotto {
 
-    protected List<Integer> numbers;
+    private List<Integer> numbers;
     public static final Integer LOTTO_PRICE = 1000;
 
     public Lotto(List<Integer> numbers) {
@@ -16,18 +19,15 @@ public class Lotto {
     }
 
     public Accuracy compare(AnswerLotto answerLotto) {
-        return Accuracy.findByAttribute(
-                // match
-                // bonus
-                getNumberOfCommons(answerLotto),
-                answerLotto.matchBonusNumber()
-        ).get();
+        Optional<Accuracy> accuracy = Accuracy.findByAttribute(getMatchNumber(answerLotto), answerLotto.hasBonusNumber(numbers));
+        if (accuracy.isEmpty()) {
+            return Accuracy.NOT_MATCH;
+        }
+        return accuracy.get();
     }
 
-    private Integer getNumberOfCommons(Lotto answerLotto) {
-        return (int) numbers.stream()
-                .filter(number -> answerLotto.numbers.contains(number))
-                .count();
+    private Integer getMatchNumber(Lotto answerLotto) {
+        return (int) numbers.stream().filter(number -> answerLotto.numbers.contains(number)).count();
     }
 
     @Override
