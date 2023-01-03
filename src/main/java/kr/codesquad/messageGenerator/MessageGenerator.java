@@ -1,9 +1,21 @@
 package kr.codesquad.messageGenerator;
 
+import kr.codesquad.domain.Accuracy;
+import kr.codesquad.domain.Lotto;
+import kr.codesquad.domain.Result;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class MessageGenerator {
 
     private static final String LOTTO_COUNT_MSG_TEMPLATE = "개를 구매했습니다.";
     private static final String INPUT_MSG_TEMPLATE = "구입금액을 입력해 주세요.";
+    private static final String ANSWER_NUMBER_MSG_TEMPLATE = "당첨 번호를 입력해 주세요.";
+    private static final String RESULT_MSG_TEMPLATE = "%d개 일치 (%d원)-%d개";
+    private static final String PROFIT_MSG_TEMPLATE = "총 수익률은 %.2f%%입니다.";
+    private static final String NEW_LINE_DELIMETER = "\n";
 
     public String getLottoCountMessage(Integer count) {
         return count + LOTTO_COUNT_MSG_TEMPLATE;
@@ -11,5 +23,27 @@ public class MessageGenerator {
 
     public String getInputMessage() {
         return INPUT_MSG_TEMPLATE;
+    }
+
+    public String getAnswerNumberMessage() {
+        return ANSWER_NUMBER_MSG_TEMPLATE;
+    }
+
+    public String getResultMessage(Result results) {
+        return String.join(NEW_LINE_DELIMETER, results.getScoreBoard().entrySet().stream()
+                .map((Map.Entry<Accuracy, Integer> entry) -> {
+                    Accuracy accuracy = entry.getKey();
+                    Integer count = entry.getValue();
+                    return String.format(RESULT_MSG_TEMPLATE, accuracy.getMatch(), accuracy.getPrize(), count);
+                })
+                .collect(Collectors.toList()));
+    }
+
+    public String getLottoMessage(List<Lotto> lottos) {
+        return String.join(NEW_LINE_DELIMETER, lottos.stream().map(lotto -> lotto.toString()).collect(Collectors.toList()));
+    }
+
+    public String getProfitMessage(Double profit) {
+        return String.format(PROFIT_MSG_TEMPLATE, profit);
     }
 }
