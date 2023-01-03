@@ -1,5 +1,8 @@
 package kr.codesquad.domain;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum Accuracy {
 
     SIX(6, false, 2000000000, "%d개 일치 (%d원)-%d개"),
@@ -24,16 +27,18 @@ public enum Accuracy {
         this.resultMessage = resultMessage;
     }
 
+    public static Optional<Accuracy> getByMatchNumber(Integer numberOfCommons) {
+        return Arrays.asList(Accuracy.values()).stream()
+                .filter(accuracy -> accuracy.getMatch() == numberOfCommons)
+                .findFirst();
+    }
+
     public Integer getMatch() {
         return match;
     }
 
     public Integer getPrize() {
         return prize;
-    }
-
-    public Boolean needBonus() {
-        return needBonus;
     }
 
     public String getResultMessage() {
