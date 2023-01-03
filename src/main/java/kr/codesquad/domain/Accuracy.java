@@ -1,6 +1,7 @@
 package kr.codesquad.domain;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static kr.codesquad.message.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
@@ -22,6 +23,12 @@ public enum Accuracy {
     private Integer prize;
     private String resultMessage;
 
+    public static final List<Accuracy> REMOVE_LIST = List.of(
+            Accuracy.ZERO,
+            Accuracy.ONE,
+            Accuracy.TWO,
+            Accuracy.NOT_MATCH
+    );
 
     Accuracy(Integer match, Boolean needBonus, Integer prize, String resultMessage) {
         this.match = match;

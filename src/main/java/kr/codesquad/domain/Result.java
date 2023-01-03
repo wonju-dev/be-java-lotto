@@ -1,13 +1,15 @@
 package kr.codesquad.domain;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static kr.codesquad.domain.Accuracy.REMOVE_LIST;
 
 public class Result {
 
     private Map<Accuracy, Integer> scoreBoard;
-
     private Result() {
         scoreBoard = new LinkedHashMap<>();
     }
@@ -31,16 +33,14 @@ public class Result {
     }
 
     public void removeUnnecessaryAccuracy() {
-        scoreBoard.remove(Accuracy.ZERO);
-        scoreBoard.remove(Accuracy.ONE);
-        scoreBoard.remove(Accuracy.TWO);
+        REMOVE_LIST.forEach(accuracy -> scoreBoard.remove(accuracy));
     }
 
-    public Integer getNetProfit() {
+    public Long getNetProfit() {
         Set<Map.Entry<Accuracy, Integer>> entries = scoreBoard.entrySet();
         return entries.stream()
-                .map((Map.Entry<Accuracy, Integer> score) -> score.getKey().getPrize() * score.getValue())
-                .reduce(0, Integer::sum);
+                .map((Map.Entry<Accuracy, Integer> entry) -> (long) entry.getKey().getPrize() * entry.getValue())
+                .reduce(0l, Long::sum);
     }
 
     public Map<Accuracy, Integer> getScoreBoard() {
