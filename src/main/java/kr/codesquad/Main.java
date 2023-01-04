@@ -6,8 +6,9 @@ import kr.codesquad.console.TerminalIn;
 import kr.codesquad.console.TerminalOut;
 import kr.codesquad.controller.LottoController;
 import kr.codesquad.controller.LottoControllerImpl;
-import kr.codesquad.domain.lottomachine.LottoMachine;
 import kr.codesquad.domain.MessageGenerator;
+import kr.codesquad.service.LottoService;
+import kr.codesquad.service.LottoServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,12 +16,9 @@ public class Main {
     }
 
     private static LottoController lottoController() {
-        return new LottoControllerImpl(lottomachine(), input(), output(), messageGenerator());
+        return new LottoControllerImpl(input(), output(), lottoService(), messageGenerator());
     }
 
-    private static LottoMachine lottomachine() {
-        return new LottoMachine();
-    }
 
     private static Input input() {
         return new TerminalIn();
@@ -28,6 +26,10 @@ public class Main {
 
     private static Output output() {
         return new TerminalOut();
+    }
+
+    private static LottoService lottoService() {
+        return new LottoServiceImpl();
     }
 
     private static MessageGenerator messageGenerator() {
