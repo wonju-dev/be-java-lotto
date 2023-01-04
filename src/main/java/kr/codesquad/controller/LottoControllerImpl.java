@@ -13,10 +13,10 @@ import java.util.List;
 
 public class LottoControllerImpl implements LottoController {
 
-    private static LottoMachine lottoMachine;
-    private static Input input;
-    private static Output output;
-    private static MessageGenerator messageGenerator;
+    private final LottoMachine lottoMachine;
+    private final Input input;
+    private final Output output;
+    private final MessageGenerator messageGenerator;
 
     public LottoControllerImpl(LottoMachine lottoMachine, Input input, Output output, MessageGenerator messageGenerator) {
         this.lottoMachine = lottoMachine;
