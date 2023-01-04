@@ -2,7 +2,6 @@ package kr.codesquad.domain;
 
 import kr.codesquad.enums.Accuracy;
 import kr.codesquad.domain.lotto.Lotto;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -17,6 +16,7 @@ public class MessageGenerator {
     public static final String MATCH_RESULT_MSG_TEMPLATE = "%d개 일치 (%d원)-%d개";
     public static final String BONUS_MATCH_RESULT_MSG_TEMPLATE = "%d개 일치, 보너스 볼 일치(%d원)-%d개";
     private static final String NEW_LINE_DELIMITER = "\n";
+
 
     public String getLottoCountMessage(Integer count) {
         return count + LOTTO_COUNT_MSG_TEMPLATE;

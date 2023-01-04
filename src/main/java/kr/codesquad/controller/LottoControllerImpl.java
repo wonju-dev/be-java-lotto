@@ -9,6 +9,7 @@ import kr.codesquad.domain.lotto.Lotto;
 import kr.codesquad.dto.PurchaseRecord;
 import kr.codesquad.service.LottoService;
 
+
 import java.util.List;
 
 public class LottoControllerImpl implements LottoController {
@@ -61,6 +62,7 @@ public class LottoControllerImpl implements LottoController {
         Integer money = input.readInteger();
         PurchaseRecord purchaseRecord = lottoService.getPurchaseRecord(money);
         output.print(messageGenerator.getLottoCountMessage(purchaseRecord.getNumberOfLottery()));
+
         return purchaseRecord;
     }
 }

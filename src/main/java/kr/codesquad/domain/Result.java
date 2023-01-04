@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 public class Result {
 
     private Map<Accuracy, Integer> scoreBoard;
     private Double returnRate;
 
     private Result() {
+        scoreBoard = new LinkedHashMap<>();
     }
 
     public static Result getNew(List<Lotto> lottos, AnswerLotto answerLotto, PurchaseRecord purchaseRecord) {
