@@ -3,18 +3,12 @@ package kr.codesquad.service;
 import kr.codesquad.domain.Result;
 import kr.codesquad.domain.lotto.AnswerLotto;
 import kr.codesquad.domain.lotto.Lotto;
-import kr.codesquad.domain.lottomachine.LottoMachine;
 import kr.codesquad.dto.PurchaseRecord;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoServiceImpl implements LottoService {
-
-    private final LottoMachine lottoMachine;
-
-    public LottoServiceImpl(LottoMachine lottoMachine) {
-        this.lottoMachine = lottoMachine;
-    }
 
     @Override
     public PurchaseRecord getPurchaseRecord(Integer money) {
@@ -23,7 +17,14 @@ public class LottoServiceImpl implements LottoService {
 
     @Override
     public List<Lotto> getRandomLottos(PurchaseRecord purchaseRecord) {
-        return lottoMachine.getRandomLottos(purchaseRecord.getNumberOfLottery());
+        List<Lotto> lottos = new ArrayList<>();
+        Integer count = purchaseRecord.getNumberOfLottery();
+
+        while (count > 0) {
+            lottos.add(new Lotto());
+            count--;
+        }
+        return lottos;
     }
 
     @Override
@@ -33,6 +34,6 @@ public class LottoServiceImpl implements LottoService {
 
     @Override
     public Result getResult(List<Lotto> lottos, AnswerLotto answerLotto, PurchaseRecord purchaseRecord) {
-        return lottoMachine.getResult(lottos, answerLotto, purchaseRecord);
+        return Result.getNew(lottos, answerLotto, purchaseRecord);
     }
 }
