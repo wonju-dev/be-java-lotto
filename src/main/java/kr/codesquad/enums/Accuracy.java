@@ -2,13 +2,11 @@ package kr.codesquad.enums;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static kr.codesquad.domain.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
 import static kr.codesquad.domain.MessageGenerator.MATCH_RESULT_MSG_TEMPLATE;
 
 public enum Accuracy {
-    NOT_MATCH(-1, false, -1, ""),
     ZERO(0, false, -1, MATCH_RESULT_MSG_TEMPLATE),
     ONE(1, false, -1, MATCH_RESULT_MSG_TEMPLATE),
     TWO(2, false, -1, MATCH_RESULT_MSG_TEMPLATE),
@@ -26,8 +24,7 @@ public enum Accuracy {
     public static final List<Accuracy> REMOVE_LIST = List.of(
             Accuracy.ZERO,
             Accuracy.ONE,
-            Accuracy.TWO,
-            Accuracy.NOT_MATCH
+            Accuracy.TWO
     );
 
     Accuracy(Integer match, Boolean needBonus, Integer prize, String resultMessage) {
@@ -37,12 +34,13 @@ public enum Accuracy {
         this.resultMessage = resultMessage;
     }
 
-    public static Optional<Accuracy> findByAttribute(Integer matchNumber, Boolean hasBonusNumber) {
+    public static Accuracy findByAttribute(Integer matchNumber, Boolean hasBonusNumber) {
         return Arrays.asList(Accuracy.values()).stream()
                 .filter(accuracy -> accuracy.match == matchNumber && (
                         (accuracy.needBonus && hasBonusNumber) || (!accuracy.needBonus && !hasBonusNumber)
                 ))
-                .findFirst();
+                .findFirst()
+                .orElse(Accuracy.ZERO);
     }
 
     public Integer getMatch() {
