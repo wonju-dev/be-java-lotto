@@ -2,7 +2,6 @@ package kr.codesquad.domain;
 
 import kr.codesquad.enums.Accuracy;
 import kr.codesquad.domain.lotto.Lotto;
-
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
