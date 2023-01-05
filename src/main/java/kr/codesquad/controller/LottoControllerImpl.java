@@ -27,9 +27,9 @@ public class LottoControllerImpl implements LottoController {
 
     @Override
     public void start() {
-        PurchaseRecord purchaseRecord = makePurchaseRecord();
+        PurchaseRecord purchaseRecord = purchaseLotto();
 
-        List<Lotto> lottos = makeRandomLottos(purchaseRecord);
+        List<Lotto> lottos = getRandomLottos(purchaseRecord);
 
         AnswerLotto answerLotto = makeAnswerLotto();
 
@@ -50,13 +50,13 @@ public class LottoControllerImpl implements LottoController {
         return lottoService.getAnswerLotto(answerNumbers, bonusNumber);
     }
 
-    private List<Lotto> makeRandomLottos(PurchaseRecord purchaseRecord) {
+    private List<Lotto> getRandomLottos(PurchaseRecord purchaseRecord) {
         List<Lotto> lottos = lottoService.getRandomLottos(purchaseRecord);
         output.print(messageGenerator.getLottoMessage(lottos));
         return lottos;
     }
 
-    private PurchaseRecord makePurchaseRecord() {
+    private PurchaseRecord purchaseLotto() {
         output.print(messageGenerator.getInputMessage());
         Integer money = input.readInteger();
         PurchaseRecord purchaseRecord = lottoService.getPurchaseRecord(money);
