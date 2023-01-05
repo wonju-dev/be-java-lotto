@@ -3,20 +3,26 @@ package kr.codesquad.domain;
 import static kr.codesquad.domain.lotto.Lotto.*;
 
 public class PurchaseRecord {
+    private Integer numOfLotto;
+    private Integer numOfManualLotto;
     private Integer usedMoney;
-    private Integer numberOfLottery;
 
-    private PurchaseRecord(Integer money) {
-        this.numberOfLottery = money / LOTTO_PRICE;
-        this.usedMoney = numberOfLottery * LOTTO_PRICE;
+    private PurchaseRecord(Integer money, Integer numOfManualLotto) {
+        this.numOfLotto = money / LOTTO_PRICE;
+        this.numOfManualLotto = numOfManualLotto;
+        this.usedMoney = numOfLotto * LOTTO_PRICE;
     }
 
-    public static PurchaseRecord getNew(Integer money) {
-        return new PurchaseRecord(money);
+    public static PurchaseRecord getNew(Integer money, Integer numOfManualLotto) {
+        return new PurchaseRecord(money, numOfManualLotto);
     }
 
-    public Integer getNumberOfLottery() {
-        return numberOfLottery;
+    public Integer getNumOfLotto() {
+        return numOfLotto;
+    }
+
+    public Integer getNumOfManualLotto() {
+        return numOfManualLotto;
     }
 
     public Integer getUsedMoney() {
