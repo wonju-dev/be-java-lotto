@@ -19,11 +19,7 @@ public class Lotto {
     }
 
     public Accuracy compare(AnswerLotto answerLotto) {
-        Optional<Accuracy> accuracy = Accuracy.findByAttribute(getMatchNumber(answerLotto), answerLotto.hasBonusNumber(numbers));
-        if (accuracy.isEmpty()) {
-            return Accuracy.NOT_MATCH;
-        }
-        return accuracy.get();
+        return Accuracy.findByAttribute(getMatchNumber(answerLotto), answerLotto.hasBonusNumber(numbers));
     }
 
     private Integer getMatchNumber(Lotto answerLotto) {
