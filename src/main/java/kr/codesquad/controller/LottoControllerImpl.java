@@ -6,7 +6,7 @@ import kr.codesquad.domain.MessageGenerator;
 import kr.codesquad.domain.Result;
 import kr.codesquad.domain.lotto.AnswerLotto;
 import kr.codesquad.domain.lotto.Lotto;
-import kr.codesquad.dto.PurchaseRecord;
+import kr.codesquad.domain.PurchaseRecord;
 import kr.codesquad.service.LottoService;
 
 import java.util.List;

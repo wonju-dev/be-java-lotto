@@ -1,4 +1,4 @@
-package kr.codesquad.dto;
+package kr.codesquad.domain;
 
 import static kr.codesquad.domain.lotto.Lotto.*;
 

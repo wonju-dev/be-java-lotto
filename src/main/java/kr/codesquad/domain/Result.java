@@ -2,7 +2,6 @@ package kr.codesquad.domain;
 
 import kr.codesquad.domain.lotto.AnswerLotto;
 import kr.codesquad.domain.lotto.Lotto;
-import kr.codesquad.dto.PurchaseRecord;
 import kr.codesquad.enums.Accuracy;
 
 import java.util.LinkedHashMap;
