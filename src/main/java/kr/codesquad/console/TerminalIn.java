@@ -15,7 +15,7 @@ public class TerminalIn implements Input {
     }
 
     @Override
-    public List<Integer> readAnswerNumbers() {
+    public List<Integer> readLottoNumbers() {
         return Arrays.asList(scanner.next().split(",")).stream()
                 .map(String::trim)
                 .map(Integer::parseInt)
