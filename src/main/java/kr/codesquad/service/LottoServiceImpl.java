@@ -19,12 +19,12 @@ public class LottoServiceImpl implements LottoService {
     @Override
     public List<Lotto> getLottos(PurchaseRecord purchaseRecord, List<List<Integer>> manualNumbers) {
         List<Lotto> lottos = new ArrayList<>();
-        lottos.addAll(getManuaLotto(manualNumbers));
+        lottos.addAll(getManualLotto(manualNumbers));
         lottos.addAll(getAutoLotto(purchaseRecord));
         return lottos;
     }
 
-    private List<Lotto> getManuaLotto(List<List<Integer>> manualNumbers) {
+    private List<Lotto> getManualLotto(List<List<Integer>> manualNumbers) {
         return manualNumbers.stream()
                 .map(manualNumber -> new Lotto(manualNumber))
                 .collect(Collectors.toList());
