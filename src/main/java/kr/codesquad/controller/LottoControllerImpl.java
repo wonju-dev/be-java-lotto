@@ -2,7 +2,7 @@ package kr.codesquad.controller;
 
 import kr.codesquad.console.Input;
 import kr.codesquad.console.Output;
-import kr.codesquad.domain.MessageGenerator;
+import kr.codesquad.generator.message.MessageGenerator;
 import kr.codesquad.domain.Result;
 import kr.codesquad.domain.lotto.AnswerLotto;
 import kr.codesquad.domain.lotto.Lotto;

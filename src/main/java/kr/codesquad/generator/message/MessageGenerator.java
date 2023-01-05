@@ -1,5 +1,6 @@
-package kr.codesquad.domain;
+package kr.codesquad.generator.message;
 
+import kr.codesquad.domain.Result;
 import kr.codesquad.enums.Accuracy;
 import kr.codesquad.domain.lotto.Lotto;
 import java.util.List;

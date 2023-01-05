@@ -1,4 +1,4 @@
-package kr.codesquad.domain;
+package kr.codesquad.generator.randomnumber;
 
 import java.util.Collections;
 import java.util.List;

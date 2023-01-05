@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Map;
 
-import static kr.codesquad.domain.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
-import static kr.codesquad.domain.MessageGenerator.MATCH_RESULT_MSG_TEMPLATE;
+import static kr.codesquad.generator.message.MessageGenerator.BONUS_MATCH_RESULT_MSG_TEMPLATE;
+import static kr.codesquad.generator.message.MessageGenerator.MATCH_RESULT_MSG_TEMPLATE;
 
 public enum Accuracy {
     NO_MATCH(0, false, 0, MATCH_RESULT_MSG_TEMPLATE),
@@ -37,12 +37,7 @@ public enum Accuracy {
     }
 
     public static Comparator<? super Map.Entry<Accuracy, Integer>> getComparator() {
-        return new Comparator<Map.Entry<Accuracy, Integer>>() {
-            @Override
-            public int compare(Map.Entry<Accuracy, Integer> o1, Map.Entry<Accuracy, Integer> o2) {
-                return o1.getKey().getMatch() - o2.getKey().getMatch();
-            }
-        };
+        return (o1, o2) -> o1.getKey().getMatch() - o2.getKey().getMatch();
     }
 
     public Integer getMatch() {
