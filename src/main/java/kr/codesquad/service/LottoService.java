@@ -8,9 +8,9 @@ import kr.codesquad.domain.PurchaseRecord;
 import java.util.List;
 
 public interface LottoService {
-    PurchaseRecord getPurchaseRecord(Integer money);
+    PurchaseRecord getPurchaseRecord(Integer money, Integer manualLottoCount);
 
-    List<Lotto> getRandomLottos(PurchaseRecord purchaseRecord);
+    List<Lotto> getLottos(PurchaseRecord purchaseRecord, List<List<Integer>> manualNumbers);
 
     AnswerLotto getAnswerLotto(List<Integer> answerNumbers, Integer bonusNumber);
 
