@@ -2,7 +2,8 @@ package kr.codesquad.enums;
 
 public enum ErrorMessage {
     INVALID_MONEY("invalid money"),
-    INVALID_LOTTO_NUMBER("invalid lotto number");
+    INVALID_LOTTO_NUMBER("invalid lotto number"),
+    CONDITION_GENERATOR_NOT_FOUND("cannot find condition generator");
 
     private String message;
 
