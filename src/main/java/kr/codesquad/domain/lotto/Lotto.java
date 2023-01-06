@@ -1,7 +1,7 @@
 package kr.codesquad.domain.lotto;
 
 import kr.codesquad.enums.Accuracy;
-import kr.codesquad.domain.RandomNumberGenerator;
+import kr.codesquad.generator.randomnumber.RandomNumberGenerator;
 
 import java.util.*;
 

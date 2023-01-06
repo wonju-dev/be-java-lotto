@@ -2,14 +2,14 @@ package kr.codesquad.controller;
 
 import kr.codesquad.console.Input;
 import kr.codesquad.console.Output;
-import kr.codesquad.domain.MessageGenerator;
+import kr.codesquad.generator.message.MessageGenerator;
 import kr.codesquad.domain.Result;
 import kr.codesquad.domain.lotto.AnswerLotto;
 import kr.codesquad.domain.lotto.Lotto;
-import kr.codesquad.dto.PurchaseRecord;
+import kr.codesquad.domain.PurchaseRecord;
 import kr.codesquad.service.LottoService;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoControllerImpl implements LottoController {
@@ -28,9 +28,9 @@ public class LottoControllerImpl implements LottoController {
 
     @Override
     public void start() {
-        PurchaseRecord purchaseRecord = makePurchaseRecord();
+        PurchaseRecord purchaseRecord = purchaseLotto();
 
-        List<Lotto> lottos = makeRandomLottos(purchaseRecord);
+        List<Lotto> lottos = getLottos(purchaseRecord);
 
         AnswerLotto answerLotto = makeAnswerLotto();
 
@@ -45,24 +45,33 @@ public class LottoControllerImpl implements LottoController {
 
     private AnswerLotto makeAnswerLotto() {
         output.print(messageGenerator.getAnswerNumberMessage());
-        List<Integer> answerNumbers = input.readAnswerNumbers();
+        List<Integer> answerNumbers = input.readLottoNumbers();
         output.print(messageGenerator.getBonusNumberMessage());
         Integer bonusNumber = input.readInteger();
         return lottoService.getAnswerLotto(answerNumbers, bonusNumber);
     }
 
-    private List<Lotto> makeRandomLottos(PurchaseRecord purchaseRecord) {
-        List<Lotto> lottos = lottoService.getRandomLottos(purchaseRecord);
-        output.print(messageGenerator.getLottoMessage(lottos));
+    private List<Lotto> getLottos(PurchaseRecord purchaseRecord) {
+        output.print(messageGenerator.getManualLottoNumberMessage());
+        List<Lotto> lottos = lottoService.getLottos(purchaseRecord, getManualNumbers(purchaseRecord));
+        output.print(messageGenerator.getLottoDetailMessage(purchaseRecord, lottos));
         return lottos;
     }
 
-    private PurchaseRecord makePurchaseRecord() {
-        output.print(messageGenerator.getInputMessage());
-        Integer money = input.readInteger();
-        PurchaseRecord purchaseRecord = lottoService.getPurchaseRecord(money);
-        output.print(messageGenerator.getLottoCountMessage(purchaseRecord.getNumberOfLottery()));
+    private List<List<Integer>> getManualNumbers(PurchaseRecord purchaseRecord) {
+        List<List<Integer>> manualNumbers = new ArrayList<>();
+        for (int count = 0; count < purchaseRecord.getNumOfManualLotto(); count++) {
+            manualNumbers.add(input.readLottoNumbers());
+        }
+        return manualNumbers;
+    }
 
+    private PurchaseRecord purchaseLotto() {
+        output.print(messageGenerator.getMoneyMessage());
+        Integer money = input.readInteger();
+        output.print(messageGenerator.getManualLottoCountMessage());
+        Integer numOfManualLotto = input.readInteger();
+        PurchaseRecord purchaseRecord = lottoService.getPurchaseRecord(money, numOfManualLotto);
         return purchaseRecord;
     }
 }
