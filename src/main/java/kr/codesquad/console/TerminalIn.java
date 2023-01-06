@@ -1,7 +1,8 @@
 package kr.codesquad.console;
 
 import kr.codesquad.enums.ErrorMessage;
-import kr.codesquad.generator.condition.ConditionGenerator;
+import kr.codesquad.generator.condition.ConditionGeneratorProvider;
+import kr.codesquad.generator.condition.SystemConditionGenerator;
 import kr.codesquad.validator.Validator;
 
 import java.util.Arrays;
@@ -13,18 +14,17 @@ public class TerminalIn implements Input {
 
     private static final Scanner scanner = new Scanner(System.in).useDelimiter("\n");
 
-    private final ConditionGenerator conditionGenerator;
-
     private static final Validator validator = new Validator();
+    private final ConditionGeneratorProvider cgp;
 
-    public TerminalIn(ConditionGenerator conditionGenerator) {
-        this.conditionGenerator = conditionGenerator;
+    public TerminalIn(ConditionGeneratorProvider cgp) {
+        this.cgp = cgp;
     }
 
     @Override
     public Integer readInteger() {
         String input = scanner.next();
-        if (validator.isAllValid(conditionGenerator.getMoneyCondition(), input)) {
+        if (validator.isAllValid(cgp.get(SystemConditionGenerator.class).getMoneyCondition(), input)) {
             return Integer.parseInt(input);
         }
 
@@ -34,7 +34,7 @@ public class TerminalIn implements Input {
     @Override
     public List<Integer> readLottoNumbers() {
         String input = scanner.next();
-        if (validator.isAllValid(conditionGenerator.getLottoNumberCondition(), input)) {
+        if (validator.isAllValid(cgp.get(SystemConditionGenerator.class).getLottoNumberCondition(), input)) {
             return parseToLottoNumber(input);
         }
 
